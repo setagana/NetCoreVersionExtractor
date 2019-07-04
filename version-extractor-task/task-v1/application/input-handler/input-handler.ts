@@ -21,6 +21,10 @@ const InputHandler: InputHandlerConstructor = class InputHandler implements Inpu
         let validPrefixPattern = new RegExp(/^[0-9a-zA-Z-]{1,25}$/);
         return validPrefixPattern.test(prefix);
     }
+
+    getProjectFileContents(path: string): string {
+        return this.fileSystem.readFileSync(path);
+    }
 }
 
 export { InputHandler };

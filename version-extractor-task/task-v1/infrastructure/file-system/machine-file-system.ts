@@ -15,13 +15,13 @@ const MachineFileSystem: FileSystemConstructor = class MachineFileSystem impleme
         return foundFiles.length === 1;
     }
 
-    getDevOpsAgentFilePath(path: string): string {
+    private getDevOpsAgentFilePath(path: string): string {
         let foundFiles = taskLibrary.findMatch(this.workingDir, path);
         return foundFiles[0];
     }
 
     readFileSync(path: string): string {
-        return fs.readFileSync(path, { encoding: 'utf8' });
+        return fs.readFileSync(this.getDevOpsAgentFilePath(path), { encoding: 'utf8' });
     }
 }
 
