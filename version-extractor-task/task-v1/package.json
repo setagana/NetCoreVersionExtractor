@@ -1,0 +1,29 @@
+{
+  "name": "net-core-version-extractor",
+  "version": "0.0.1",
+  "description": "A simple custom build task for Azure DevOps to extract the Version property from .csproj files created by .NET Core and Standard 2.0+ projects",
+  "main": "index.js",
+  "scripts": {
+    "test": "run-s build mocha-test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/setagana/NetCoreVersionExtractor.git"
+  },
+  "keywords": [
+    "AzureDevOps"
+  ],
+  "author": "Matthew de Beer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/setagana/NetCoreVersionExtractor/issues"
+  },
+  "homepage": "https://github.com/setagana/NetCoreVersionExtractor#readme",
+  "dependencies": {
+    "azure-pipelines-task-lib": "^2.8.0"
+  },
+  "devDependencies": {
+    "@types/node": "^12.0.12",
+    "@types/q": "^1.5.2"
+  }
+}
