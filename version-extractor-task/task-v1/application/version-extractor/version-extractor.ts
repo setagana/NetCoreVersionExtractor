@@ -6,7 +6,6 @@ const VersionExtractor: VersionExtractorConstructor = class VersionExtractor imp
     private inputHandler: InputHandlerInterface;
 
     private filePath: string;
-    private fileContents:string = '';
     private prefix: string;
 
     constructor(inputHandlerService: InputHandlerInterface, projectFilePath: string, 
@@ -19,6 +18,7 @@ const VersionExtractor: VersionExtractorConstructor = class VersionExtractor imp
 
     run(): void {
         this.validateInputs();
+        let fileContents = this.getProjectFileContents(this.filePath);
     }
 
     private validateInputs(): void {
@@ -31,6 +31,10 @@ const VersionExtractor: VersionExtractorConstructor = class VersionExtractor imp
         if (!isValidPrefix) {
             throw new Error('The entered prefix appears to contain non-alphanumeric characters or is too long (more than 25 characters): ' + this.prefix);
         }
+    }
+
+    private getProjectFileContents(path: string): string {
+        return this.inputHandler.getProjectFileContents(path);
     }
 }
 
