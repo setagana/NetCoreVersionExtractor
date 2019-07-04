@@ -13,6 +13,14 @@
     },
     "inputs": [
         {
+            "name": "projectFileLocation",
+            "type": "filePath",
+            "label": "Project file location",
+            "defaultValue": "",
+            "required": true,
+            "helpMarkDown": "The location of the project file from which to extract the Version property."
+        },
+        {
             "name": "prefix",
             "type": "string",
             "label": "Build variable prefix",
