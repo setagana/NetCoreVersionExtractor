@@ -4,8 +4,7 @@ import taskLibrary = require('azure-pipelines-task-lib/task');
 import fs = require('fs');
 
 const MachineFileSystem: FileSystemConstructor = class MachineFileSystem implements FileSystemInterface {
-
-    workingDir: string;
+    private workingDir: string;
 
     constructor() {
         this.workingDir = taskLibrary.getVariable('System.DefaultWorkingDirectory');
@@ -24,7 +23,6 @@ const MachineFileSystem: FileSystemConstructor = class MachineFileSystem impleme
     readFileSync(path: string): string {
         return fs.readFileSync(path, { encoding: 'utf8' });
     }
-
 }
 
 export { MachineFileSystem };

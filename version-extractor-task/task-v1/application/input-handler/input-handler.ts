@@ -3,7 +3,7 @@ import { InputHandlerInterface } from "./input-handler-interface";
 import { FileSystemInterface } from "../../infrastructure/file-system/file-system-interface";
 
 const InputHandler: InputHandlerConstructor = class InputHandler implements InputHandlerInterface {
-    fileSystem: FileSystemInterface;
+    private fileSystem: FileSystemInterface;
 
     constructor(fs: FileSystemInterface) {
         this.fileSystem = fs;
