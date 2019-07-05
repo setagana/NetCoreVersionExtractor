@@ -24,7 +24,7 @@ const VersionExtractor: VersionExtractorConstructor = class VersionExtractor imp
 
     run(): void {
         this.validateInputs();
-        let fileContents = this.getProjectFileContents(this.filePath);
+        let fileContents = this.inputHandler.getProjectFileContents(this.filePath);
         let version = this.projectFileParser.getVersion(fileContents);
         this.variableSetter.setTaskVariables(this.prefix, version);
     }
@@ -39,10 +39,6 @@ const VersionExtractor: VersionExtractorConstructor = class VersionExtractor imp
         if (!isValidPrefix) {
             throw new Error('The entered prefix appears to contain non-alphanumeric characters or is too long (more than 25 characters): ' + this.prefix);
         }
-    }
-
-    private getProjectFileContents(path: string): string {
-        return this.inputHandler.getProjectFileContents(path);
     }
 }
 
