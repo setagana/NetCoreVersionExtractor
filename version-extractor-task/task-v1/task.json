@@ -9,7 +9,7 @@
     "author": "Matthew de Beer",
     "version": {
         "Major": 0,
-        "Minor": 2,
+        "Minor": 3,
         "Patch": 0
     },
     "inputs": [
@@ -28,6 +28,14 @@
             "defaultValue": "",
             "required": false,
             "helpMarkDown": "Provide an optional prefix for the variable name containing the Version. If provided, the variable name will be $(Prefix-ProjectVersion), else it will be $(ProjectVersion)."
+        },
+        {
+            "name": "setBuildNumber",
+            "type": "boolean",
+            "label": "Set Build Number to Version",
+            "defaultValue": false,
+            "required": false,
+            "helpMarkDown": "Optionally set the Build Number to the found version."
         }
     ],
     "instanceNameFormat": "Extract Version from $(projectFileLocation)",

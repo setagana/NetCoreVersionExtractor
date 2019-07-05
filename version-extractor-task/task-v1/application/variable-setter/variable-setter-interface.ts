@@ -1,3 +1,3 @@
 export interface VariableSetterInterface {
-    setTaskVariables(prefix: string, value: string): void;
+    setTaskVariables(prefix: string, value: string, setBuildNumber: boolean): void;
 }

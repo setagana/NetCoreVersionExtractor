@@ -7,5 +7,5 @@ import { LoggingInterface } from '../../infrastructure/logging/logging-interface
 export interface VersionExtractorConstructor {
     new (inputHandlerService: InputHandlerInterface, projectFileParserService: ProjectFileParserInterface, 
         variableSetterService: VariableSetterInterface, loggingService: LoggingInterface,
-        projectFilePath: string, variablePrefix: string): VersionExtractorInterface;
+        projectFilePath: string, variablePrefix: string, setBuildNumber: boolean): VersionExtractorInterface;
 }

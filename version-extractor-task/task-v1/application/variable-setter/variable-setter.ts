@@ -14,11 +14,15 @@ const VariableSetter: VariableSetterConstructor = class VariableSetter implement
         this.logger = loggingService;
     }
 
-    setTaskVariables(prefix: string, value: string): void {
+    setTaskVariables(prefix: string, value: string, setBuildNumber: boolean): void {
         this.logger.log('Starting setting variables...');
         let prefixedVariableName = this.getPrefixedVariableName(prefix, this.variableName);
         this.logger.log('Prefixed variable name determined as: ' + prefixedVariableName);
         this.taskVariableRepo.setVariable(prefixedVariableName, value);
+        if (setBuildNumber) {
+            this.logger.log('Setting BuildNumber...')
+            this.setBuildNumber(value);
+        }
         this.logger.log('Finishing setting variables...')
     }
 
@@ -29,6 +33,10 @@ const VariableSetter: VariableSetterConstructor = class VariableSetter implement
             return prefix + '-' + variableName;
         }
         return variableName;
+    }
+    
+    private setBuildNumber(value: string): void {
+        this.taskVariableRepo.setVariable('Build.BuildNumber', value);
     }
 }
 
