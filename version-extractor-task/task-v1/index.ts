@@ -3,6 +3,8 @@ import { VersionExtractor } from './application/version-extractor/version-extrac
 import { InputHandler } from './application/input-handler/input-handler';
 import { MachineFileSystem } from './infrastructure/file-system/machine-file-system';
 import { ProjectFileParser } from './application/project-file-parser/project-file-parser';
+import { DevopsPipelineVariableRepo } from './infrastructure/task-variables/devops-pipeline-variable-repo';
+import { VariableSetter } from './application/variable-setter/variable-setter';
 
 async function run() {
     let projectFilePath = taskLibrary.getPathInput('projectFileLocation', true, true);
@@ -11,7 +13,9 @@ async function run() {
     let fileSystem = new MachineFileSystem();
     let inputHandler = new InputHandler(fileSystem);
     let projectFileParser = new ProjectFileParser();
-    let versionExtractor = new VersionExtractor(inputHandler, projectFileParser, projectFilePath, variablePrefix);
+    let taskVariableRepo = new DevopsPipelineVariableRepo();
+    let variableSetter = new VariableSetter(taskVariableRepo);
+    let versionExtractor = new VersionExtractor(inputHandler, projectFileParser, variableSetter, projectFilePath, variablePrefix);
 
     try {
         versionExtractor.run();
