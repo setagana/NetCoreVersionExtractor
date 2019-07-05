@@ -17,7 +17,7 @@ const VariableSetter: VariableSetterConstructor = class VariableSetter implement
     }
 
     private getPrefixedVariableName(prefix: string, variableName: string): string {
-        if (prefix !== '') {
+        if (prefix !== '' && prefix !== undefined) {
             return prefix.concat('-',variableName);
         }
         return variableName;

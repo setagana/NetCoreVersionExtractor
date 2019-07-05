@@ -2,7 +2,7 @@
     "manifestVersion": 1,
     "id": "net-core-version-extractor",
     "name": ".NET Core / Standard Version Extractor",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "publisher": "MatthewdeBeer",
     "targets": [
         {
