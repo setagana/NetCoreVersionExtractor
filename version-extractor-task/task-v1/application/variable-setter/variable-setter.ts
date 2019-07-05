@@ -1,24 +1,32 @@
 import { VariableSetterConstructor } from './variable-setter-constructor';
 import { VariableSetterInterface } from './variable-setter-interface';
 import { TaskVariableRepoInterface } from '../../infrastructure/task-variables/task-variable-repo-interface';
+import { LoggingInterface } from '../../infrastructure/logging/logging-interface';
 
 const VariableSetter: VariableSetterConstructor = class VariableSetter implements VariableSetterInterface {
     taskVariableRepo: TaskVariableRepoInterface;
+    logger: LoggingInterface;
 
     readonly variableName = 'ProjectVersion';
 
-    constructor(variableRepo: TaskVariableRepoInterface) {
+    constructor(variableRepo: TaskVariableRepoInterface, loggingService: LoggingInterface) {
         this.taskVariableRepo = variableRepo;
+        this.logger = loggingService;
     }
 
     setTaskVariables(prefix: string, value: string): void {
+        this.logger.log('Starting setting variables...');
         let prefixedVariableName = this.getPrefixedVariableName(prefix, this.variableName);
+        this.logger.log('Prefixed variable name determined as: ' + prefixedVariableName);
         this.taskVariableRepo.setVariable(prefixedVariableName, value);
+        this.logger.log('Finishing setting variables...')
     }
 
     private getPrefixedVariableName(prefix: string, variableName: string): string {
+        this.logger.log('Determining prefixed variable name...');
+        this.logger.log('Prefix value: ' + prefix);
         if (prefix !== '' && prefix !== null) {
-            return prefix.concat('-',variableName);
+            return prefix + '-' + variableName;
         }
         return variableName;
     }
