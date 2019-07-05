@@ -37,17 +37,21 @@ function VariableSetterTests() {
 
         variableSetter.setTaskVariables('', value, setBuildNumber);
 
-        expect(variableRepo.variableNames[1]).to.equal('Build.BuildNumber');
-        expect(variableRepo.variableValues[1]).to.equal(value)
+        expect(variableRepo.newBuildNumber).to.equal(value)
     });
 
     class MockTaskVariableRepo implements TaskVariableRepoInterface {
         variableNames: string[] = new Array();
         variableValues: string[] = new Array();
+        newBuildNumber: string = '';
 
         setVariable(variableName: string, variableValue: string): void {
             this.variableNames.push(variableName);
             this.variableValues.push(variableValue);
+        }
+
+        updateBuildNumber(buildNumber: string): void {
+            this.newBuildNumber = buildNumber;
         }
 
     }

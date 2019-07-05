@@ -36,7 +36,7 @@ const VariableSetter: VariableSetterConstructor = class VariableSetter implement
     }
     
     private setBuildNumber(value: string): void {
-        this.taskVariableRepo.setVariable('Build.BuildNumber', value);
+        this.taskVariableRepo.updateBuildNumber(value);
     }
 }
 
