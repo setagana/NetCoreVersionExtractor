@@ -9,10 +9,11 @@ function VariableSetterTests() {
         let loggingService = new MockLoggingService();
         let variableSetter = new VariableSetter(variableRepo, loggingService);
         let prefix = 'TestPrefix';
+        let setBuildNumber = false;
 
-        variableSetter.setTaskVariables(prefix, '');
+        variableSetter.setTaskVariables(prefix, '', setBuildNumber);
 
-        expect(variableRepo.variableName).to.equal('TestPrefix-ProjectVersion');
+        expect(variableRepo.variableNames[0]).to.equal('TestPrefix-ProjectVersion');
     });
 
     it('should set the given value on the variable', () => {
@@ -20,19 +21,33 @@ function VariableSetterTests() {
         let loggingService = new MockLoggingService();
         let variableSetter = new VariableSetter(variableRepo, loggingService);
         let value = 'TestValue';
+        let setBuildNumber = false;
 
-        variableSetter.setTaskVariables('', value);
+        variableSetter.setTaskVariables('', value, setBuildNumber);
 
-        expect(variableRepo.variableValue).to.equal(value);
+        expect(variableRepo.variableValues[0]).to.equal(value);
+    });
+
+    it('should set the build number if requested', () => {
+        let variableRepo = new MockTaskVariableRepo();
+        let loggingService = new MockLoggingService();
+        let variableSetter = new VariableSetter(variableRepo, loggingService);
+        let value = 'TestValue';
+        let setBuildNumber = true;
+
+        variableSetter.setTaskVariables('', value, setBuildNumber);
+
+        expect(variableRepo.variableNames[1]).to.equal('Build.BuildNumber');
+        expect(variableRepo.variableValues[1]).to.equal(value)
     });
 
     class MockTaskVariableRepo implements TaskVariableRepoInterface {
-        variableName: string = '';
-        variableValue: string = '';
+        variableNames: string[] = new Array();
+        variableValues: string[] = new Array();
 
         setVariable(variableName: string, variableValue: string): void {
-            this.variableName = variableName;
-            this.variableValue = variableValue;
+            this.variableNames.push(variableName);
+            this.variableValues.push(variableValue);
         }
 
     }
