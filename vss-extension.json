@@ -2,7 +2,7 @@
     "manifestVersion": 1,
     "id": "net-core-version-extractor",
     "name": ".NET Core / Standard Version Extractor",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "publisher": "MatthewdeBeer",
     "tags": [
         "Application Version",
@@ -10,6 +10,9 @@
         "csproj",
         ".NET Core",
         ".NET Standard"
+    ],
+    "galleryFlags": [
+        "Public"
     ],
     "content": {
         "license": {
