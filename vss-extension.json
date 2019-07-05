@@ -2,8 +2,35 @@
     "manifestVersion": 1,
     "id": "net-core-version-extractor",
     "name": ".NET Core / Standard Version Extractor",
-    "version": "0.1.1",
+    "version": "0.2.0",
     "publisher": "MatthewdeBeer",
+    "tags": [
+        "Application Version",
+        "Version",
+        "csproj",
+        ".NET Core",
+        ".NET Standard"
+    ],
+    "content": {
+        "license": {
+          "path": "LICENSE"
+        },
+        "details": {
+          "path": "README.md"
+        }
+    },
+    "links": {
+        "support": {
+          "uri": "https://github.com/setagana/NetCoreVersionExtractor/issues"
+        },
+        "repository": {
+          "uri": "https://github.com/setagana/NetCoreVersionExtractor"
+        }
+    },
+    "repository": {
+        "type": "git",
+        "uri": "https://github.com/setagana/NetCoreVersionExtractor"
+    },
     "targets": [
         {
             "id": "Microsoft.VisualStudio.Services"
