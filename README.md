@@ -14,3 +14,7 @@ The prefix should be alphanumeric and up to 25 characters.
 ## Reading the data
 
 If no prefix is provided, the task will save your <Version> to `$(ProjectVersion)`. If a prefix is provided it will be saved to `$(Prefix-ProjectVersion)`.
+
+## Set the BuildNumber with the found version
+
+The task also gives you the option to set the Build Number for the current Build equal to the version number found in the csproj file. Combined with tagging of the commit that initiated the build, this gives you great visibility from source control, to build logs, to your package management solution.
