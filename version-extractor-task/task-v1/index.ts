@@ -15,6 +15,7 @@ async function run() {
     let projectFileParser = new ProjectFileParser();
     let taskVariableRepo = new DevopsPipelineVariableRepo();
     let variableSetter = new VariableSetter(taskVariableRepo);
+    
     let versionExtractor = new VersionExtractor(inputHandler, projectFileParser, variableSetter, projectFilePath, variablePrefix);
 
     try {
