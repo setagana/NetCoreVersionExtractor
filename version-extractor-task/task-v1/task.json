@@ -8,9 +8,9 @@
     "visibility": ["Build"],
     "author": "Matthew de Beer",
     "version": {
-        "Major": 0,
-        "Minor": 3,
-        "Patch": 2
+        "Major": 1,
+        "Minor": 0,
+        "Patch": 0
     },
     "inputs": [
         {
