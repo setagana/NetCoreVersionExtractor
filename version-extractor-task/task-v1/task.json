@@ -3,8 +3,9 @@
     "name": "NetCoreVersionExtractor",
     "friendlyName": ".NET Core Version Extractor",
     "description": "Extracts the Version property from a .csproj file created for .NET Core / Standard 2.0+.",
-    "helpMarkDown": "",
+    "helpMarkDown": "[More info](https://github.com/setagana/NetCoreVersionExtractor)",
     "category": "Utility",
+    "visibility": ["Build"],
     "author": "Matthew de Beer",
     "version": {
         "Major": 0,
@@ -37,7 +38,7 @@
             "helpMarkDown": "Optionally set the Build Number to the found version."
         }
     ],
-    "instanceNameFormat": "Extract Project Version",
+    "instanceNameFormat": "Extract Version from $(projectFileLocation)",
     "execution": {
         "Node": {
             "target": "index.js"
