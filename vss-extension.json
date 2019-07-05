@@ -1,0 +1,36 @@
+{
+    "manifestVersion": 1,
+    "id": "net-core-version-extractor",
+    "name": ".NET Core / Standard Version Extractor",
+    "version": "0.0.1",
+    "publisher": "MatthewdeBeer",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "Useful for retrieving the <Version> element from a .NET Core / Standard csproj file.",
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "icons": {
+        "default": "images/extension-icon.png"        
+    },
+    "files": [
+        {
+            "path": "version-extractor-task"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "version-extractor-build-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "version-extractor-task"
+            }
+        }
+    ]
+}
