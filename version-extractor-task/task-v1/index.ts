@@ -10,6 +10,7 @@ import { DevopsPipelineLogger } from './infrastructure/logging/devops-pipeline-l
 async function run() {
     let projectFilePath = taskLibrary.getPathInput('projectFileLocation', true, true);
     let variablePrefix = taskLibrary.getInput('prefix', false);
+    let setBuildNumber = taskLibrary.getBoolInput('setBuildNumber', false);
 
     let fileSystem = new MachineFileSystem();
     let inputHandler = new InputHandler(fileSystem);
@@ -19,7 +20,7 @@ async function run() {
     let variableSetter = new VariableSetter(taskVariableRepo, loggingService);
 
     let versionExtractor = new VersionExtractor(inputHandler, projectFileParser, variableSetter, loggingService, 
-        projectFilePath, variablePrefix);
+        projectFilePath, variablePrefix, setBuildNumber);
 
     try {
         versionExtractor.run();

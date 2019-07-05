@@ -13,9 +13,11 @@ const VersionExtractor: VersionExtractorConstructor = class VersionExtractor imp
 
     private filePath: string;
     private prefix: string;
+    private setBuildNumber: boolean;
 
     constructor(inputHandlerService: InputHandlerInterface, projectFileParserService: ProjectFileParserInterface, 
-        variableSetterService: VariableSetterInterface, loggingService: LoggingInterface, projectFilePath: string, variablePrefix: string) {
+        variableSetterService: VariableSetterInterface, loggingService: LoggingInterface, 
+        projectFilePath: string, variablePrefix: string, setBuildNumber: boolean) {
             this.inputHandler = inputHandlerService;
             this.projectFileParser = projectFileParserService;
             this.variableSetter = variableSetterService;
@@ -23,6 +25,7 @@ const VersionExtractor: VersionExtractorConstructor = class VersionExtractor imp
             
             this.filePath = projectFilePath;
             this.prefix = variablePrefix;
+            this.setBuildNumber = setBuildNumber;
     }
 
     run(): void {
@@ -33,7 +36,7 @@ const VersionExtractor: VersionExtractorConstructor = class VersionExtractor imp
         this.logger.log('Parsing version from project file...');
         let version = this.projectFileParser.getVersion(fileContents);
         this.logger.log('Setting variable with version: ' + version);
-        this.variableSetter.setTaskVariables(this.prefix, version);
+        this.variableSetter.setTaskVariables(this.prefix, version, this.setBuildNumber);
         this.logger.log('Work complete!');
     }
 
