@@ -1,11 +1,13 @@
 import { expect } from 'chai';
 import { VariableSetter } from '../../../application/variable-setter/variable-setter';
 import { TaskVariableRepoInterface } from '../../../infrastructure/task-variables/task-variable-repo-interface';
+import { LoggingInterface } from '../../../infrastructure/logging/logging-interface';
 
 function VariableSetterTests() {
     it('should prefix the variable name appropriately', () => {
         let variableRepo = new MockTaskVariableRepo();
-        let variableSetter = new VariableSetter(variableRepo);
+        let loggingService = new MockLoggingService();
+        let variableSetter = new VariableSetter(variableRepo, loggingService);
         let prefix = 'TestPrefix';
 
         variableSetter.setTaskVariables(prefix, '');
@@ -15,7 +17,8 @@ function VariableSetterTests() {
 
     it('should set the given value on the variable', () => {
         let variableRepo = new MockTaskVariableRepo();
-        let variableSetter = new VariableSetter(variableRepo);
+        let loggingService = new MockLoggingService();
+        let variableSetter = new VariableSetter(variableRepo, loggingService);
         let value = 'TestValue';
 
         variableSetter.setTaskVariables('', value);
@@ -30,6 +33,13 @@ function VariableSetterTests() {
         setVariable(variableName: string, variableValue: string): void {
             this.variableName = variableName;
             this.variableValue = variableValue;
+        }
+
+    }
+    
+    class MockLoggingService implements LoggingInterface {
+        log(text: string): void {
+            return;
         }
 
     }
