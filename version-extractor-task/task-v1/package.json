@@ -24,7 +24,7 @@
   "dependencies": {
     "azure-pipelines-task-lib": "^2.8.0",
     "fast-xml-parser": "^3.12.16",
-    "lodash": "^4.17.11"
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
     "@types/chai": "^4.1.7",
